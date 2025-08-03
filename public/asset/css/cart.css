@@ -1,0 +1,143 @@
+.cart-wrapper {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+.alert-success, .alert-error {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.alert-success {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.alert-error {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+}
+
+.cart-table th,
+.cart-table td {
+    border: 1px solid #e5e7eb;
+    padding: 1rem;
+    text-align: center;
+}
+
+.cart-table th {
+    background-color: #f3f4f6;
+}
+
+.cart-table img {
+    width: 80px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.remove-btn {
+    background-color: #ef4444;
+    color: white;
+    border: none;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.remove-btn:hover {
+    background-color: #dc2626;
+}
+
+.checkout-area {
+    text-align: right;
+}
+
+.checkout-btn {
+    background-color: #10b981;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.checkout-btn:hover {
+    background-color: #059669;
+}
+
+.empty-cart {
+    text-align: center;
+    font-size: 1.25rem;
+    color: #6b7280;
+    padding: 2rem 0;
+}
+
+.total-row td {
+    background-color: #f9fafb;
+    font-weight: bold;
+}
+
+/* 🔁 Fully Responsive: Card layout for small screens */
+@media (max-width: 768px) {
+    .cart-table,
+    .cart-table thead,
+    .cart-table tbody,
+    .cart-table th,
+    .cart-table td,
+    .cart-table tr {
+        display: block;
+        width: 100%;
+    }
+
+    .cart-table thead {
+        display: none;
+    }
+
+    .cart-table tr {
+        margin-bottom: 1.5rem;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        padding: 1rem;
+        background-color: #fff;
+    }
+
+    .cart-table td {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.75rem 0;
+        border: none;
+        border-bottom: 1px solid #f3f4f6;
+    }
+
+    .cart-table td:last-child {}
+
+    .back-btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.6rem 1.2rem;
+    background-color: #3b82f6;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+    .back-btn:hover {
+    background-color: #2563eb;
+    }
+
+
+}
