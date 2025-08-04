@@ -40,15 +40,23 @@ class UserController extends Controller
         $cart->email = $user->email;
         $cart->file= $car->file;
         $cart->car_name= $car->name;
-        $cart->price = $car->price;
+        $rawPrice = str_replace(',', '', $car->price); // remove commas
+        $price = (float) $rawPrice;
+
+          if (empty($car->discount) || $car->discount == 0) {
+               $cart->price = $price;
+          } else {
+              $discountedPrice = $price * (1 - ($car->discount / 100));
+            $cart->price = round($discountedPrice, 2);
+          }
+
+
         $cart->model= $car->model;
         $cart->units= $req->units;
         $cart->user_id = $user->id;
         $cart->car_id = $car->id;
         
         $cart->save();
-
-        //session()->flash("added_to_cart","Your Products Has Been Added To Cart");
 
         return redirect()->route('dashboard')->with('success', 'Car Has Been Added To Cart.');
 
@@ -103,7 +111,7 @@ class UserController extends Controller
    
 
     //CAR BOOKING METHOD(ORDER METHOD)
-    public function Order() {
+    public function OrderCheckout(Request $req) {
         $userId = Auth::id();
 
         $cartItems = Cart::where('user_id', $userId)->get();
@@ -124,6 +132,11 @@ class UserController extends Controller
                     'price'    => $item->price,
                     'total'    => $item->price * $item->units,
                     'image'    => $item->file,
+                    'billing_email' => $req->email,
+                    'billing_address' => $req->address,
+                    'billing_phone' => $req->phone,
+                    'grand_total' => $req->grandTotal,
+                    'payment_status' => "Pay After Inspection"
                 ]);
             }
 
@@ -131,7 +144,7 @@ class UserController extends Controller
 
             DB::commit();
 
-            return redirect()->back()->with('success', 'Your Order Has Been Recieved, Please check your mail for your order confimation.');
+            return redirect()->back()->with('success', 'Your Order Has Been Recieved, Please check your email to know when to inspect and pay.');
            
           } catch (\Throwable $e) {
             DB::rollBack();
@@ -154,6 +167,11 @@ class UserController extends Controller
           $csrf_token = csrf_token();
 
           return response(SmartyService::render('carDetails', compact('car','cars_url','css_url','home_url','addCart_url','csrf_token')));
+         }
+
+         public function Checkout($grandTotal) { 
+             $cars = Cart::where("user_id",auth()->id())->get();
+            return view("user.checkout",compact('grandTotal','cars'));
          }
     
 }

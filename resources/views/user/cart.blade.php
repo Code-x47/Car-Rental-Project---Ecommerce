@@ -75,8 +75,8 @@
             </table>
 
             <div class="checkout-area">
-                <form action="{{route('order.checkout')}}" method="POST">
-                    @csrf
+                <form action="{{route('user.checkout',$grandTotal)}}" method="Get">
+                    
                     <button type="submit" class="checkout-btn">Proceed to Checkout</button>
                 </form>
             </div>

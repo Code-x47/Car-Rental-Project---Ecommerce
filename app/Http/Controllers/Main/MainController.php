@@ -63,7 +63,7 @@ class MainController extends Controller
           $order = Order::with('users')->findOrFail($id);
 
           $order->status = $order->status === "pending" ? "approved" : "pending";
-          
+          $order->payment_status = $order->payment_status === "Pay After Inspection" ? "Paid" : "Pay After Inspection";
          if($order->status === "approved") {
                event(new OrderEvent($order->users->email));
            }

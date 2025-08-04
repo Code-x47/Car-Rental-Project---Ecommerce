@@ -35,8 +35,9 @@ use App\Http\Controllers\User\UserController;
     Route::Post("/addToCart/{id}","AddToCart")->name('add.cart');
     Route::get("cart","ViewCart")->name('view.cart');
     Route::Delete('remove/{id}','RemoveItem')->name('remove.item');
-    Route::Post("/order","Order")->name("order.checkout");
+    Route::Post("/PAI","OrderCheckout")->name("order.checkout");
     Route::get("details/{id}","CarDetails")->name('car.detail');
+    Route::get("checkout/{grandTotal}","Checkout")->name('user.checkout');
    
    });
 

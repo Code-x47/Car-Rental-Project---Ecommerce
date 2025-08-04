@@ -22,7 +22,12 @@ class Order extends Model
                     'units',
                     'price',
                     'total',
-                    'image'
+                    'image',
+                    'billing_address',
+                    'billing_phone',
+                    'billing_email',
+                    'grand_total',
+                    'payment_status'
        ];
 
 }

@@ -6,5 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cart extends Model
 {
-    //
+    // app/Models/Cart.php
+   protected $casts = [
+       'price' => 'float',
+    ];
+
 }
