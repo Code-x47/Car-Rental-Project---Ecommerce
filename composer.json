@@ -71,10 +71,14 @@
              "post-create-project-cmd": [
               "@php artisan key:generate"
   ],
-                    "post-install-cmd": [
-                    "@php artisan migrate --force"
+         "post-install-cmd": [
+          "@php artisan migrate --force",
+          "@php artisan db:seed --force"
   ]
+
+  
 },
+
 
 
 
