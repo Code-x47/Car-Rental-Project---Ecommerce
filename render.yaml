@@ -2,7 +2,7 @@ services:
   - type: web
     name: car-rental-ecommerce
     runtime: docker
-    repo: https://github.com/your-username/your-repo-name
+    repo: https://github.com/Code-x47/Car-Rental-Project---Ecommerce.git
     branch: main
     plan: free
     envVars:
