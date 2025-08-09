@@ -48,7 +48,7 @@ class MainController extends Controller
       }
       //Admin Dashboard Method
       public function AdminDash() {
-        $orders = Order::with('users')->withTrashed()->paginate(5);
+        $orders = Order::with('users')->withTrashed()->paginate(10);
         $user = User::count();
         $order = Order::count();
         $pending = Order::where("status",'pending')->count();

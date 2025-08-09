@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Main\MainController;
@@ -48,6 +49,32 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+//SQLITE ROUTES Starts Here
+
+Route::get('/tables', function () {
+    return DB::select('SELECT name FROM sqlite_master WHERE type="table" ORDER BY name;');
+});
+
+Route::get('/cars', function () {
+    return DB::table('cars')->get();
+});
+
+
+Route::get('/users', function () {
+    return DB::table('users')->get();
+});
+
+Route::get('/make-admin', function () {
+    $user = User::find(1);
+    $user->role = 'admin';
+    $user->save();
+    return 'User updated to admin!';
+});
+
+//SQLITE ENDS HERE
+
+
 
 
 
