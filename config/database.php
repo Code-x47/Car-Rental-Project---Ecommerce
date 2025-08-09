@@ -42,6 +42,12 @@ return [
             'synchronous' => null,
         ],
 
+ 
+
+
+
+
+
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DB_URL'),
